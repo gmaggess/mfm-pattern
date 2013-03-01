@@ -18,15 +18,9 @@
     <body>
         <div class="container">
             <div class="hero-unit">
-                <h1>'Allo, 'Allo!</h1>
-                <p>You now have</p>
-                <ul>
-                    <li>HTML5 Boilerplate</li>
-                    <li>Twitter Bootstrap</li>
-                    <li>RequireJS</li>
-                </ul>
-                <p>installed.</p>
-                <h3>Enjoy coding! - Yeoman</h3>
+                <span>Name: <input data-bind="value: name"/></span>
+                <div><span>Email: <output data-bind="text: email"/></span></div>
+                <button type="submit" data-bind="click: calcEmail">Send</button>
             </div>
         </div>
 
@@ -43,7 +37,14 @@
         </script>
 
         <!-- build:js scripts/main.js -->
-        <script data-main="scripts/main" src="components/requirejs/require.js"></script>
+        <!--script data-main="scripts/main" src="components/requirejs/require.js"></script-->
+        <script data-main="scripts/main" src="components/knockout/build/output/knockout-latest.js"></script>
+        <script data-main="scripts/main" src="scripts/vendor/mediator.js"></script>
+        <script data-main="scripts/main" src="scripts/core.js"></script>
+        <script data-main="scripts/main" src="scripts/facade.js"></script>
+        <script data-main="scripts/main" src="scripts/subscription.js"></script>
+        <script data-main="scripts/main" src="scripts/module.js"></script>
+        <script data-main="scripts/main" src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>

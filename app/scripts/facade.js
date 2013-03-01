@@ -1,17 +1,23 @@
-var Facade = function (mediator, appCore) {
+var Facade = function (mediator, app) {
 
-    this.mediator = mediator;
+    var _private = {
+        loadEmail: function(data) {
+            return app.email.loadEmail(data);
+        }
+    };
 
     return {
-        updateEmail: function(data, callback) {
-            publish('email', data);
-            //abc(callback);
+        notify: function (event) {
+            if (event.type === Subscription.LOAD_EMAIL) {
+                event.data = _private.loadEmail(event.data);
+            }
+            mediator.publish(event.type, event.data);
         },
-        subscribe: function (channel, callback) {
-            mediator.subscribe(channel, callback);
+        listen: function (event) {
+            mediator.subscribe(event.type, event.callback);
         },
-        publish: function (channel, data) {
-            mediator.publish(channel, data);
+        ignore: function (event) {
+            mediator.unsubscribe(event.type, event.callback);
         }
     }
 

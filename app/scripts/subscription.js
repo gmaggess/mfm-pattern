@@ -1,6 +1,3 @@
-var subscription = {
-
-    init:function (facade) {
-        facade.subscribe('email', facade.updateEmail);
-    }
+var Subscription = {
+    LOAD_EMAIL:'load-email'
 }

@@ -1,5 +1,6 @@
 (function() {
-    var facade = new Facade(new Mediator(), {core: new Core()});
-    subscription.init(facade);
-    ko.applyBindings(new ViewModel(facade));
+    var facade = new Facade(new Mediator(), {email: new EmailModel()});
+    var module = new ViewModel(facade);
+    module.init();
+    ko.applyBindings(module);
 })();

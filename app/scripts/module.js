@@ -1,11 +1,20 @@
 var ViewModel = function (facade) {
 
     return {
+        init: function() {
+            facade.listen({type: Subscription.LOAD_EMAIL,
+                              callback:  this.email});
+        },
+        destroy: function() {
+            facade.ignore({type: Subscription.LOAD_EMAIL,
+                                callback: this.email});
+        },
         name: ko.observable(),
         email: ko.observable(),
-        fire: function () {
-            facade.updateEmail(this.name(), function(data) {
-                this.email = data;
+        loadEmail: function () {
+            facade.notify ({
+                type: Subscription.LOAD_EMAIL,
+                data: this.name()
             });
         }
     }

@@ -1,8 +1,10 @@
-var Core = function() {
+var EmailModel = function() {
+
+    var EMAIL_DOMAIN = "@gmail.com";
 
     return {
-        setEmail: function(data) {
-           return data + "@gmail.com";
+        loadEmail: function(data) {
+           return data.trim().replace(' ', '.').toLowerCase() + EMAIL_DOMAIN;
         }
     }
 }
